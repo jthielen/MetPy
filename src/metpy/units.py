@@ -50,11 +50,6 @@ units = pint.UnitRegistry(
     ]
 )
 
-# Capture v0.10 NEP 18 warning on first creation
-with warnings.catch_warnings():
-    warnings.simplefilter('ignore')
-    units.Quantity([])
-
 # Add a percent unit
 units.define('percent = 0.01 = %')
 
