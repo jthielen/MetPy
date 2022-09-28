@@ -4,6 +4,7 @@
 """Tools for interpolating to a vertical slice/cross section through data."""
 
 import numpy as np
+import pint
 import xarray as xr
 
 from ..package_tools import Exporter
@@ -58,8 +59,8 @@ def interpolate_to_slice(data, points, interp_type='linear'):
 
     # Bug in xarray: interp strips units
     if (
-        isinstance(data.data, units.Quantity)
-        and not isinstance(data_sliced.data, units.Quantity)
+        isinstance(data.data, pint.Quantity)
+        and not isinstance(data_sliced.data, pint.Quantity)
     ):
         data_sliced.data = units.Quantity(data_sliced.data, data.data.units)
 
